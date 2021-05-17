@@ -1,20 +1,27 @@
-const User = require('../models/user');
+//const User = require('../models/user');
 var bcrypt = require('bcrypt');//for password
 const jwt = require('jsonwebtoken');
+const sequelize = require('sequelize');
 
 const db = require("../models");
-const Tutorial = db.tutorials;
+const User = db.users;
 const Op = db.Sequelize.Op;
 
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then(
       (hash) => {
-        console.log("About to create a new user!")
-        const user = new User({
-          email: req.body.email,
-          password: hash
-        });
+        console.log("About to create a new user! blabla")
+
+        let user = User.create(
+          Object.assign(req.body, { password: hash,
+            email: req.body.email })
+        );
+
+        //const user = User.create({
+        //  email: req.body.email,
+        //  password: hash
+       // });
         user.save().then(
           () => {
             res.status(201).json({

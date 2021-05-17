@@ -5,10 +5,7 @@ const user = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       unique: true,
-      allowNull: false,
-      validate: {
-      notEmpty: true,
-      },
+      allowNull: false
     },
     password: {
       type: DataTypes.STRING,
