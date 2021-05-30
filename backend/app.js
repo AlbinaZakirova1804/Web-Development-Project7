@@ -7,6 +7,7 @@ const path = require('path');
 const userRoutes = require('./routes/user');
 
 
+
 const app = express();
 
 //const db = require('./models')
@@ -23,12 +24,13 @@ app.use((req, res, next) => {
     next();
   });
 
-const db = require('./models')
-db.sequelize.sync();  
 
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-});
+//const db = require('./models')
+//db.sequelize.sync();  
+
+//db.sequelize.sync({ force: true }).then(() => {
+//  console.log("Drop and re-sync db.");
+//});
 
 app.use(bodyParser.json());
 

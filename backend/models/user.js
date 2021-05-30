@@ -1,22 +1,28 @@
+const { Sequelize } = require(".");
 
+module.exports = (sequelize, DataTypes) => {
 
-const user = (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
     email: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       unique: true,
       allowNull: false
     },
     password: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
+
       allowNull: false
     }
   });
- /* User.associate = models => {
-    User.hasMany(models.Message);
-  };*/
-  return User;
+
+ User.associate = models => {
+    User.hasMany(models.Message, {
+      foreignKey: 'messageId'
+    });
+  
+  
 };
  
-module.exports = user;
-//export default user;
+return User;
+
+};
