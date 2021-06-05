@@ -2,18 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-//import models, { sequelize } from './models';
 
+const messageRoutes = require('./routes/message');
 const userRoutes = require('./routes/user');
 
-
-
 const app = express();
-
-//const db = require('./models')
-//db.sequelize.sync();
-//db connect
-//
 
 
 //Cross Origin Resource Sharing
@@ -24,17 +17,11 @@ app.use((req, res, next) => {
     next();
   });
 
-
-//const db = require('./models')
-//db.sequelize.sync();  
-
-//db.sequelize.sync({ force: true }).then(() => {
-//  console.log("Drop and re-sync db.");
-//});
-
 app.use(bodyParser.json());
 
 
+
+app.use('/api/messages', messageRoutes);
 app.use('/api/auth', userRoutes);
 
 
