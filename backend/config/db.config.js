@@ -34,7 +34,7 @@ const createTables = () => {
           REFERENCES users(id),
             CONSTRAINT fk_messages
             FOREIGN KEY(parent_id)
-            REFERENCES messages(id)
+            REFERENCES messages(id) ON DELETE CASCADE
       )`;
       
 
