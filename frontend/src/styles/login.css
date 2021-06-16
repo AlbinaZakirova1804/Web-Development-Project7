@@ -1,0 +1,12 @@
+h3 {
+text-align: center;
+color: black;
+};
+
+div .input{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: blueviolet;
+}
