@@ -4,7 +4,9 @@ import './styles/index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Banner from './components/Banner';
-import Login from './components/Login';
+//import Register from './components/Register';
+import Header from './components/Header';
+import Login from './components/Login'
 
 /*ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +18,7 @@ import Login from './components/Login';
 ReactDOM.render(
   <React.StrictMode>
   <Banner />
+  <Header/>
   <Login/>
   </React.StrictMode>,
   document.getElementById('root')

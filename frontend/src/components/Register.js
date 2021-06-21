@@ -3,9 +3,9 @@ import '../styles/login.css'
 import axios from "axios"
 
 
-//login user
+//register user
 
-function Login() {
+function Register() {
 /************** */
 
 const [email, setEmail] = useState()
@@ -14,7 +14,7 @@ const [password, setPassword] = useState()
 /************** */
  
 /*********** */
-const API_URL = "http://localhost:3000/api/auth/login";
+const API_URL = "http://localhost:3000/api/auth/signup";
 
 
 const handleSubmit =  (e) => {
@@ -22,33 +22,20 @@ const handleSubmit =  (e) => {
   e.preventDefault();
   alert(email);
   alert(password);
-  const data ={
-    email,
-    password
-}
 
-  //const axios = require('axios');
-
-  //const res = axios.post(API_URL, ')
-const res = axios.post(API_URL, 
-                        data
-    )
-    .then((res) => {
-//getting token out of response
-      console.log(res.data.token)
-    if(res.data.token) {
-        localStorage.setItem('token', res.data.token)
-        alert("You are loged in:)")
-    }
-    alert("You are not loged in:(")},
-     (err) => {
+  const axios = require('axios');
+  const res = axios.post(API_URL, {email: email,
+    password: password})
+  .then((res) => {
+    alert(res);
+    alert(res.email);
+  }, (err) => {
     alert(err);
   })
 }
   
 return <div className="card col-12 col-lg-4 logiin-card mt-2 mx-auto">
-    
-          <form> <h1>User Login</h1>
+          <form>
                     <div className='form-group text-left'>
                         <label htmlFor="InputEmail">Email address</label>
                         <input type="email"
@@ -73,10 +60,10 @@ return <div className="card col-12 col-lg-4 logiin-card mt-2 mx-auto">
                     }}
                     placeholder="Enter password"/>
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Login</button>
+                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Register</button>
                     
                 </form>
                 
          </div>
 }
-export default Login
+export default Register

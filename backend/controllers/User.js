@@ -62,6 +62,7 @@ exports.login = (req, res, next) => {
         error: new Error('User not found!')
       });
       } else {
+        console.log(logUser);
         bcrypt.compare(logUser.password, result.rows[0].password)
         .then(
           (valid) => {
