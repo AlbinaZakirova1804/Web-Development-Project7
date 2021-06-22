@@ -35,9 +35,11 @@ exports.createMessage = (req, res, next) => {
  /*********VIEW_ALL********/
  exports.viewAllMessages = (req, res, next) => {
   pool.connect((error, client, done) => {
-    const query = 'SELECT * FROM Messages Where user_id = $1';
-    const values = [req.body.user_id];
-    client.query(query, values, (error, result) => {
+    console.log("user "+req.currentUser);
+    //const query = 'SELECT * FROM Messages Where user_id = $1';
+    const query = 'SELECT * FROM Messages';
+    //const values = [req.currentUser];//changed
+    client.query(query/*, values*/, (error, result) => {
         
       done();
       if (error) {

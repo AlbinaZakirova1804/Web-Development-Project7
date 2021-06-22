@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import '../styles/login.css'
 import axios from "axios"
+import {Link, Router, Route, Redirect} from "react-router-dom"
+import Dashboard from "./Dashboard"
 
 
 //login user
@@ -35,12 +37,15 @@ const res = axios.post(API_URL,
     )
     .then((res) => {
 //getting token out of response
+      console.log(res.data)
       console.log(res.data.token)
     if(res.data.token) {
         localStorage.setItem('token', res.data.token)
-        alert("You are loged in:)")
-    }
-    alert("You are not loged in:(")},
+        //alert("You are loged in:)"
+        return (<Router><Route path="/dashboard" component={Dashboard} /></Router>)
+        
+    }else{
+    alert("You are not loged in:(")}},
      (err) => {
     alert(err);
   })
@@ -48,7 +53,7 @@ const res = axios.post(API_URL,
   
 return <div className="card col-12 col-lg-4 logiin-card mt-2 mx-auto">
     
-          <form> <h1>User Login</h1>
+          <form> <h1>Login page</h1>
                     <div className='form-group text-left'>
                         <label htmlFor="InputEmail">Email address</label>
                         <input type="email"
@@ -76,7 +81,7 @@ return <div className="card col-12 col-lg-4 logiin-card mt-2 mx-auto">
                     <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Login</button>
                     
                 </form>
-                
+                Not registred yet? <Link to = "/Register">Signup</Link>
          </div>
 }
 export default Login

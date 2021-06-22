@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import '../styles/login.css'
 import axios from "axios"
+import {Link} from "react-router-dom"
 
 
 //register user
@@ -35,7 +36,7 @@ const handleSubmit =  (e) => {
 }
   
 return <div className="card col-12 col-lg-4 logiin-card mt-2 mx-auto">
-          <form>
+          <form><h1>Signup page</h1>
                     <div className='form-group text-left'>
                         <label htmlFor="InputEmail">Email address</label>
                         <input type="email"
@@ -63,7 +64,7 @@ return <div className="card col-12 col-lg-4 logiin-card mt-2 mx-auto">
                     <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Register</button>
                     
                 </form>
-                
+                If you alredy registred <Link to="/Login">Login</Link>
          </div>
 }
 export default Register

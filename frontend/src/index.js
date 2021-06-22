@@ -1,13 +1,15 @@
-import React from 'react';
+//import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-//import App from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Banner from './components/Banner';
-//import Register from './components/Register';
+import Navigation from './components/Navigation';
+import Register from './components/Register';
 import Header from './components/Header';
 import Login from './components/Login'
-
+import ViewAll from './components/messages/ViewAll'
+import React, { Component } from 'react';
+import {BrowserRouter} from 'react-router-dom'
 /*ReactDOM.render(
   <React.StrictMode>
   <App />
@@ -16,13 +18,13 @@ import Login from './components/Login'
 );*/
 
 ReactDOM.render(
-  <React.StrictMode>
-  <Banner />
-  <Header/>
-  <Login/>
-  </React.StrictMode>,
+  <BrowserRouter>
+        <App />
+    </BrowserRouter>, 
   document.getElementById('root')
 );
+
+
 
 /*function Header() {
   return(<h1>Welcome to Messager!</h1>)
