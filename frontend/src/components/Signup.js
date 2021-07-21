@@ -6,7 +6,7 @@ import {Link} from "react-router-dom"
 
 //register user
 
-function Register() {
+function Signup() {
 /************** */
 
 const [email, setEmail] = useState()
@@ -36,7 +36,7 @@ const handleSubmit =  (e) => {
 }
   
 return <div className="card col-12 col-lg-4 logiin-card mt-2 mx-auto">
-          <form><h1>Signup page</h1>
+          <form>
                     <div className='form-group text-left'>
                         <label htmlFor="InputEmail">Email address</label>
                         <input type="email"
@@ -48,7 +48,7 @@ return <div className="card col-12 col-lg-4 logiin-card mt-2 mx-auto">
                         }}
                         placeholder="Enter email"/>
                     </div>
-            
+
 
                     <div className="form-group text-left">
                     <label htmlFor="InputPassword">Password</label>
@@ -61,10 +61,11 @@ return <div className="card col-12 col-lg-4 logiin-card mt-2 mx-auto">
                     }}
                     placeholder="Enter password"/>
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Register</button>
+            
+                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Signup</button>
                     
                 </form>
-                If you alredy registred <Link to="/Login">Login</Link>
+                <Link to="/Login">Already have an account?</Link>
          </div>
 }
-export default Register
+export default Signup

@@ -62,7 +62,7 @@ exports.login = (req, res, next) => {
         error: new Error('User not found!')
       });
       } else {
-        console.log(logUser);
+        console.log(logUser.id);
         bcrypt.compare(logUser.password, result.rows[0].password)
         .then(
           (valid) => {
@@ -77,10 +77,10 @@ exports.login = (req, res, next) => {
               { expiresIn: '24h' });
 
             res.status(200).json({
-              userId: logUser._id,
+              userEmail: logUser.email,
               token: token
             });
-            console.log(logUser, logUser._id);
+            console.log("logged user from back end ->  "+logUser, logUser.email, "user token ->   "+token);
           }).catch(
           (error) => {
             res.status(500).json({

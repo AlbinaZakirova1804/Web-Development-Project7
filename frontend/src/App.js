@@ -1,41 +1,51 @@
 import React, { useState } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Switch, Route,Redirect} 
+import 
+{BrowserRouter as Router,
+  Switch,
+  Link,
+  Route,
+  Redirect} 
 from 'react-router-dom';
-import Dashboard from "./components/Dashboard"
 import Login from './components/Login';
-import Register from './components/Register'
-import  ViewAll  from './components/messages/ViewAll';
-import Navigation from './components/Navigation'
-import Header from './components/Header'
+import Signup from './components/Signup'
+
+import PrivateRoute from './components/PrivateRoute';
+import Home from "./components/Home";
+import { AuthContext } from "./context/auth";
+import Dashboard from './components/Dashboard';
 
 
 
-function App() {
 
-  const [token, setToken] = useState(localStorage.getItem('token'));
+function App(props) {
+const [authTokens, setAuthTokens ] = useState();
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+const setTokens = (data) => {
+  localStorage.setItem("token", JSON.stringify(data));
+  setAuthTokens(data);
+}
 
   return (
-    <main>
+    <AuthContext.Provider value={{authTokens, setAuthTokens: setTokens }}>
       <Router>
-      <Navigation/>
-      <Header/>
-      
-            <Switch>
-            
-                <Route path='/login' component={Login} exact/>
-                <Route path="/register" component={Register} exact/>
-                <Route path="/viewall" component={ViewAll} exact/>
-                
-            
-            </Switch>
-        </Router>
-        </main>
-  )
+        <div>
+          <ul>
+          <li>
+            <Link to="/home">Home Page</Link>
+          </li>
+          <li>
+            <Link to="/dashboard">Dashboard Page</Link>
+          </li>
+          </ul>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login}/>
+          <Route path="/signup" component={Signup}/>
+          <PrivateRoute path="/dashboard" component={Dashboard} />
+        </div>
+      </Router>
+    </AuthContext.Provider>
+  );
 }
 
 export default App;

@@ -10,9 +10,8 @@ module.exports = (req, res, next) => {
     } else {
       
 //define current user in order to to use it in every controller
-      return req.currentUserId = userId;
+       //req.currentUserId = userId;
  //*********************************/     
-
       next();
     }
   } catch {

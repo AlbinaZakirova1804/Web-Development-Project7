@@ -4,26 +4,22 @@ import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Navigation from './components/Navigation';
-import Register from './components/Register';
+import Register from './components/Signup';
 import Header from './components/Header';
 import Login from './components/Login'
 import ViewAll from './components/messages/ViewAll'
 import React, { Component } from 'react';
 import {BrowserRouter} from 'react-router-dom'
-/*ReactDOM.render(
-  <React.StrictMode>
-  <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);*/
+
+
 
 ReactDOM.render(
   <BrowserRouter>
+        <Navigation/>
         <App />
     </BrowserRouter>, 
   document.getElementById('root')
-);
-
+)
 
 
 /*function Header() {
