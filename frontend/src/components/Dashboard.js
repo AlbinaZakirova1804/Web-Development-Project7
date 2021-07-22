@@ -6,21 +6,20 @@ import { useAuth } from "../context/auth";
 
 function Dashboard(props) {
     const { setAuthTokens } = useAuth();
- const token = localStorage.token;
+ const token = JSON.parse(localStorage.token);
+ console.log(localStorage.token+"  ,token ->"+JSON.parse(localStorage.getItem('data')));
 
 function logOut() {
     setAuthTokens();
-    console.log("setAuthTokens -> " + setAuthTokens);
 }
 
 const API_URL = "http://localhost:3000/api/messages/"
 
 
-axios.get(API_URL,
-    {headers: { 'Authorization': `Bearer ${token }`} })
-
+axios.get(API_URL, {headers: { "Authorization": `Bearer ${token}`} })
 .then((res)=>{
     console.log(res)
+    console.log(res.data.result)
 }, (err) => {
     alert("messages error"+err);
 }
